@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.0.0.RC1'
+        springBootVersion = '2.0.0.M3'
     }
     repositories {
         mavenCentral()
@@ -33,4 +33,8 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile group: 'org.projectlombok', name: 'lombok', version: '1.16.20'
+    compile('mysql:mysql-connector-java')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
