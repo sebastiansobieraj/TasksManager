@@ -1,7 +1,6 @@
-call gradlew build
+call runcrud
 if "%ERRORLEVEL%" == "0" goto chrome
-echo.
-echo GRADLEW BUILD has errors - breaking work
+echo Something goes wrong
 goto fail
 
 :chrome
