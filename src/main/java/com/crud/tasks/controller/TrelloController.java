@@ -2,6 +2,8 @@ package com.crud.tasks.controller;
 
 import com.crud.tasks.domain.TrelloBoardDto;
 import com.crud.tasks.trello.client.TrelloClient;
+import lombok.NoArgsConstructor;
+import org.apache.el.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,7 +23,13 @@ public class TrelloController {
 
         List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
 
-        trelloBoards.forEach(trelloBoardDto -> System.out.println(trelloBoardDto.getId() + " " + trelloBoardDto.getName()));
+        trelloBoards.stream()
+                .filter(t -> !t.getName().isEmpty())
+                .filter(t -> t.getName() != null)
+                .filter(t -> !t.getId().isEmpty())
+                .filter(t -> t.getId() != null)
+                .filter(t -> t.getName().contains("Kodilla"))
+                .forEach(trelloBoardDto -> System.out.println(trelloBoardDto.getId() + " " + trelloBoardDto.getName()));
 
     }
 }

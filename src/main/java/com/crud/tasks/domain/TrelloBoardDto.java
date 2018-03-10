@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
-//@NoArgsConstructor
+@NoArgsConstructor
 @Getter
 public class TrelloBoardDto {
     private String name;
