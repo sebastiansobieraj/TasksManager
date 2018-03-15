@@ -14,5 +14,6 @@ public class Mail {
     private String subject;
     @NonNull
     private String message;
+    @NonNull
     private String toCc;
 }
