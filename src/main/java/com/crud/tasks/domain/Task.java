@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-//@NoArgsConstructor
+@NoArgsConstructor
 @Getter
 @AllArgsConstructor
 @Entity(name = "tasks")

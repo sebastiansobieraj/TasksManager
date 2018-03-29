@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toList;
+
 @Component
 public class TrelloValidator {
     public static final Logger LOGGER = LoggerFactory.getLogger(TrelloValidator.class);
@@ -17,7 +19,7 @@ public class TrelloValidator {
         if (trelloCard.getName().contains("test")) {
             LOGGER.info("Someone is testing my application !");
         } else {
-            LOGGER.info("Seems that my application is used in proper way.");
+            LOGGER.info("Seems that my application is used in proper way");
         }
     }
 
