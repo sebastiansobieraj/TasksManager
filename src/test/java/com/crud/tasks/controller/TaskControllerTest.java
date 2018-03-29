@@ -5,7 +5,6 @@ import com.crud.tasks.domain.TaskDto;
 import com.crud.tasks.mapper.TaskMapper;
 import com.crud.tasks.service.DbService;
 import com.google.gson.Gson;
-import jdk.nashorn.internal.objects.annotations.Getter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
@@ -87,7 +86,7 @@ public class TaskControllerTest {
         when(taskMapper.mapToTaskDto(task.orElseThrow(TaskNotFoundException::new))).thenReturn(taskDto);
 
         //When & Then
-        mockMvc.perform(get("/v1/task/getTask/1")
+        mockMvc.perform(get("/v1/task/getTask/?taskId=1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(1)))
@@ -120,6 +119,8 @@ public class TaskControllerTest {
 
     @Test
     public void testDeleteTask() throws Exception {
-
+        //Given & When & Then
+        mockMvc.perform(delete("/v1/task/deleteTask/?taskId=1").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
     }
 }
