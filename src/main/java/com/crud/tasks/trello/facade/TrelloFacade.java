@@ -28,24 +28,13 @@ public class TrelloFacade {
 
     public List<TrelloBoardDto> fetchTrelloBoards(){
         List<TrelloBoard> trelloBoards = trelloMapper.mapToBoards(trelloService.fetchTrelloBoards());
-
-        LOGGER.info("Starting filtering boards...");
-        List<TrelloBoard> filteredBoards = trelloBoards.stream()
-                .filter(trelloBoard -> trelloBoard.getName().equalsIgnoreCase("test"))
-                .collect(Collectors.toList());
-        LOGGER.info("Boards has been filtered. Current list size: " + filteredBoards.size());
-
+        List<TrelloBoard> filteredBoards = trelloValidator.validateTrelloBoards(trelloBoards);
         return trelloMapper.mapToBoardsDto(filteredBoards);
     }
 
     public CreatedTrelloCardDto createCard(final TrelloCardDto trelloCardDto){
         TrelloCard trelloCard = trelloMapper.mapToCard(trelloCardDto);
-
-        if(trelloCard.getName().contains("test")) {
-            LOGGER.info("Someone is testing my application!");
-        } else {
-            LOGGER.info("Seems that my application is used in proper way.");
-        }
+        trelloValidator.validateCard(trelloCard);
         return trelloService.createdTrelloCard(trelloMapper.mapToCardDto(trelloCard));
     }
 }
