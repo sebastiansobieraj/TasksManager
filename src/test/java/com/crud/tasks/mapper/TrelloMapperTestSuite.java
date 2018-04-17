@@ -106,7 +106,7 @@ public class TrelloMapperTestSuite {
     @Test
     public void mapToBoardsTest(){
         //Given
-        TrelloBoardDto trelloBoardDto = new TrelloBoardDto("Test", "1", trelloListDtoForTests());
+        TrelloBoardDto trelloBoardDto = new TrelloBoardDto("1", "Test", trelloListDtoForTests());
         List<TrelloBoardDto> trelloBoardDtoList = new ArrayList<>();
         trelloBoardDtoList.add(trelloBoardDto);
 
@@ -131,7 +131,7 @@ public class TrelloMapperTestSuite {
 
         //Then
         assertEquals(1, trelloBoardDtoList.size());
-        assertEquals("Test", trelloBoardDtoList.get(0).getId());
-        assertEquals("1", trelloBoardDtoList.get(0).getName());
+        assertEquals("1", trelloBoardDtoList.get(0).getId());
+        assertEquals("Test", trelloBoardDtoList.get(0).getName());
     }
 }

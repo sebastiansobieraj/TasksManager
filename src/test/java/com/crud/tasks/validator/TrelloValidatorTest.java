@@ -42,6 +42,6 @@ public class TrelloValidatorTest {
         List<TrelloBoard> fillteredTrelloBoard = trelloValidator.validateTrelloBoards(trelloBoards);
 
         //Then
-        assertEquals(1, fillteredTrelloBoard.size());
+        assertEquals(0, fillteredTrelloBoard.size());
     }
 }

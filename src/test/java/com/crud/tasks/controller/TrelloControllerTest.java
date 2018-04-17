@@ -53,7 +53,7 @@ public class TrelloControllerTest {
         trelloLists.add(new TrelloListDto("1", "Test List", false));
 
         List<TrelloBoardDto> trelloBoards = new ArrayList<>();
-        trelloBoards.add(new TrelloBoardDto("Test Task", "1", trelloLists));
+        trelloBoards.add(new TrelloBoardDto("1", "Test Task", trelloLists));
 
         when(trelloFacade.fetchTrelloBoards()).thenReturn(trelloBoards);
 
