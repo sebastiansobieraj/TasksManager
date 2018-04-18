@@ -17,6 +17,7 @@ public class MailCreatorService {
     public String buildTrelloCardEmail(String message) {
         Context context = new Context();
         context.setVariable("message", message);
+//        context.setVariable("");
         return templateEngine.process("mail/created-trello-card-mail", context);
     }
 }
