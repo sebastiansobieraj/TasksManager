@@ -79,13 +79,13 @@ public class TaskControllerTest {
     @Test
     public void testGetTask() throws Exception {
         Optional<Task> task = Optional.of(new Task(1L, "Test", "Test task"));
-//        TaskDto taskDto = new TaskDto(1L, "Test", "Test task");
+        TaskDto taskDto = new TaskDto(1L, "Test", "Test task");
 
         when(dbService.getTaskById(1L)).thenReturn(task);
-//        when(taskMapper.mapToTaskDto(task.orElseThrow(TaskNotFoundException::new))).thenReturn(taskDto);
+        when(taskMapper.mapToTaskDto(task.orElseThrow(TaskNotFoundException::new))).thenReturn(taskDto);
 
         //When & Then
-        mockMvc.perform(get("/v1/tasks/1")
+        mockMvc.perform(get("/v1/tasks/1").param("taskId", "1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(1)))
@@ -119,7 +119,7 @@ public class TaskControllerTest {
     @Test
     public void testDeleteTask() throws Exception {
         //Given & When & Then
-        mockMvc.perform(delete("/v1/tasks/1").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(delete("/v1/tasks/1").param("taskId", "1").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 }
